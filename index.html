@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Downloader</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+        input {
+            background: #444;
+            color: #fff;
+        }
+        button {
+            background: #ff007f;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        button:hover {
+            background: #e60069;
+        }
+        .result a {
+            color: #ff007f;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TikTok Downloader</h1>
+        <p style="color: #fff; font-size: 18px;">Masukkan URL video TikTok yang ingin diunduh:</p>
+        <input type="text" id="url" placeholder="Masukkan URL TikTok di sini">
+        <button onclick="downloadVideo()">Klik Dan mulai Unduh</button>
+        <div id="result" class="result"></div>
+        <div class="footer">Made with ❤️ by Zayron</div>
+    </div>
+
+    <script>
+        function downloadVideo() {
+            const url = document.getElementById("url").value;
+            const resultDiv = document.getElementById("result");
+
+            if (!url) {
+                resultDiv.innerHTML = "<p style='color: red;'>URL tidak boleh kosong!</p>";
+                return;
+            }
+
+            const apiUrl = `https://ssstik.io/download?url=${encodeURIComponent(url)}`;
+
+            resultDiv.innerHTML = `
+                <p>Video sedang diproses...</p>
+                <a href="${apiUrl}" target="_blank">Klik di sini untuk download video</a>
+            `;
+        }
+    </script>
+</body>
+</html>
